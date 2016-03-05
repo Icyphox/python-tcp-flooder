@@ -29,9 +29,10 @@ s.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
      
 # now start constructing the packet
 packet = '';
+
  
-source_ip = '192.168.0.6'
-dest_ip = '192.168.0.1' # or socket.gethostbyname('www.google.com')
+source_ip = raw_input("Enter the source IP (xx.xx.xx.xx)")
+dest_ip = raw_input("Enter the destination IP (xx.xx.xx.xx)") # or socket.gethostbyname('www.google.com')
  
 # ip header fields
 ihl = 5
@@ -53,7 +54,7 @@ ip_header = pack('!BBHHHBBH4s4s' , ihl_version, tos, tot_len, id, frag_off, ttl,
  
 # tcp header fields
 source = 1234   # source port
-dest = 8888   # destination port
+dest = raw_input("Enter the destination port. Preferably 80 for webservers.")   # destination port
 seq = 0
 ack_seq = 0
 doff = 5    #4 bit field, size of tcp header, 5 * 4 = 20 bytes
